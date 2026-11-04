@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def wish():
-    message = "Happy birthday {name}"
+    message = "Happy birthday to {name}"
     return message.format(name=os.getenv("NAME", "Sanchit"))
     
 if __name__ == "__main__":
