@@ -1,9 +1,11 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build','-t','northamerica-northeast1-docker.pkg.dev/ci-cd-513007/ci-cd-test-artifacts/pyappimage:latest',"."] # if docker file is presnet in another dir specify it with -f path 
+    args: ['build','-t','northamerica-northeast1-docker.pkg.dev/${PROJECT_ID}/ci-cd-test-artifacts/pyappimage:latest',"."] # if docker file is presnet in another dir specify it with -f path 
 
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push','northamerica-northeast1-docker.pkg.dev/ci-cd-513007/ci-cd-test-artifacts/pyappimage:latest']
+    args: ['push','northamerica-northeast1-docker.pkg.dev/${PROJECT_ID}/ci-cd-test-artifacts/pyappimage:latest']
+    # another way using images tage
+   #images: ['northamerica-northeast1-docker.pkg.dev/ci-cd-513007/ci-cd-test-artifacts/pyappimage:latest',"."] we have to specify it as last cmd because it gets stored after build is complete 
   - name: 'gcr.io/google.com/cloudsdktool/google-cloud-cli'
     entrypoint: gcloud
     args:
@@ -11,7 +13,7 @@ steps:
       - 'deploy'
       - 'pyflaskapp'
       - '--image'
-      - 'northamerica-northeast1-docker.pkg.dev/ci-cd-513007/ci-cd-test-artifacts/pyappimage:latest'
+      - 'northamerica-northeast1-docker.pkg.dev/${PROJECT_ID}/ci-cd-test-artifacts/pyappimage:latest'
       - --region
       - 'northamerica-northeast1'
       - '--allow-unauthenticated'
