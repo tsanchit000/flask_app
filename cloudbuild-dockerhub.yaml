@@ -1,0 +1,15 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: bash
+    args: ['-c','docker login --username=$$DOCKER_USER_NAME --password=$$DOCKER_PASSWORD']
+    secretEnv: ['DOCKER_USER_NAME','DOCKER_PASSWORD']
+
+availableSecrets:
+  secretManager:
+    - versionName: projects/776789252026/secrets/flask_cleint_id/versions/1
+      env: DOCKER_USER_NAME
+
+  
+    - versionName: projects/776789252026/secrets/lask_cleint_secret/versions/1
+      env: DOCKER_PASSWORD
+
