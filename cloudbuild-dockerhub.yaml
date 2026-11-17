@@ -3,7 +3,7 @@ steps:
     entrypoint: bash
     args: ['-c','docker login --username=$$DOCKER_USER_NAME --password=$$DOCKER_PASSWORD']
     secretEnv: ['DOCKER_USER_NAME','DOCKER_PASSWORD']
-  
+  # skip the build trigger 
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: bash
     args: ['-c', 'docker build -t $$DOCKER_USER_NAME/pyimage:latest .']
