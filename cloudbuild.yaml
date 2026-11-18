@@ -6,8 +6,20 @@ steps:
 - name: 'ubuntu'
   args: ['echo','hello from step 2']
   #waitFor: ['-']--for running step one and step 2 concurrently
+  id: 'step2'
   waitFor: ['step1']
 
 - name: 'ubuntu'
   args: ['echo','hello from step 3']
+  id: 'step3'
   waitFor: ['step1']
+
+
+- name: 'ubuntu'
+  args: ['echo','hello from step 4']
+  waitFor: ['step2','step3']
+   
+
+- name: 'ubuntu'
+  args: ['echo','hello from step 5']
+  waitFor: ['step2','step3']
