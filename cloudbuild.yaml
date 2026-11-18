@@ -1,0 +1,9 @@
+steps:
+- name: 'ubuntu'
+  args: ['echo','hello from step 1']
+
+- name: 'ubuntu'
+  args: ['echo','hello from step 2']
+
+- name: 'ubuntu'
+  args: ['echo','hello from step 3']
