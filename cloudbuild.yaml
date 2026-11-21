@@ -9,5 +9,5 @@ steps:
     echo $BRANCH_NAME
 logsBucket: "gs://cloud_logs_writer"
 options:
-  logging: GCS_ONLY
+  logging: GCS_ONLY # this will push the build logs to gcs
      
