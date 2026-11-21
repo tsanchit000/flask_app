@@ -1,0 +1,13 @@
+steps:
+- name: 'ubuntu'
+  entrypoint: 'bash'
+  args:
+   - '-c'
+   - |
+    echo "hello world" 
+    echo $TRIGGER_NAME
+    echo $BRANCH_NAME
+logsBucket: "gs://cloud_logs_writer"
+options:
+  logging: GCS_ONLY
+     
